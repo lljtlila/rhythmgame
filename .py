@@ -40,7 +40,7 @@ game_start=False
 button_appear=False
 moonhalo=False  
 while run:
-    if key[pygame.K_SPACE] :
+    if key[pygame.K_SPACE] and [pygame.K_0] :
         if game_start==False:
             screen.blit(bg1,bgpos1)
             game_start=True
