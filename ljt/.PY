@@ -1,0 +1,18 @@
+import turtle as t
+#人物
+t.screensize(1280,720,'black')
+t.setup(0.9,0.9,0,0)
+t.speed(6)
+t.penup()
+t.setx(20)
+t.sety(300)
+t.pendown()
+t.color('white')
+t.dot(100)
+t.goto(0,200)
+t.colormode(255)
+t.color(30,30,30)
+t.dot(200)
+t.color(252,224,203)
+t.goto(0,160)
+t.dot()
