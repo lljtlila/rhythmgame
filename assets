@@ -1,0 +1,3 @@
+import pygame
+def import_assets(self):
+    self.animations={"波奇":[],"刀子":[],"物凄":[],"小圆":[]}

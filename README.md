@@ -1,2 +1,0 @@
-# rhythmgame
-fuck Luo Zhiqi
