@@ -1,6 +1,6 @@
 import pygame
 import button
-class moonhaloready():
+class bocciready():
     start1=pygame.image.load("底.moonhalo.png")
     start2=pygame.image.load("简介.moonhalo.png")
     start3=pygame.image.load("开始.moonhalo.png")
@@ -17,4 +17,3 @@ class moonhaloready():
     gequ3.draw(screen)
     gequ4.draw(screen)
     gequ5.draw(screen)
-moonhaloready()
