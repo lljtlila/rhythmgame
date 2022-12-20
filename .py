@@ -15,6 +15,7 @@ bgpos=bg.get_rect()
 bgpos1=bg1.get_rect()
 
 
+
 logo=pygame.image.load("logo.png")
 pygame.display.set_icon(logo)
 screen=pygame.display.set_mode((1280,720),0,32)
@@ -37,50 +38,86 @@ gequ3=button.Button(500,470,start3,1)
 gequ4=button.Button(336,600,start4,1) 
 run=True  
 game_start=False
+moonhalo=False 
+moonhalo_start=True 
+wuqi=False
+boqi=False 
 button_appear=False
-moonhalo=False  
 while run:
-    if key[pygame.K_SPACE] and [pygame.K_0] :
-        if game_start==False:
-            screen.blit(bg1,bgpos1)
-            game_start=True
+    key=pygame.key.get_pressed() 
+    if key[pygame.K_SPACE] :
+        game_start=True
+        if game_start==True:
+            pygame.mixer.music.load("背景音乐.wav")
+            
             button_appear=True 
             pygame.mixer.init()
-            pygame.mixer.music.load("背景音乐.wav")
+        
+            screen.blit(bg1,bgpos1)
             pygame.mixer.music.set_volume(0.2)
             pygame.mixer.music.play(-1)
-            if button_appear==True :           
-                gequ1.draw(screen)
-                gequ2.draw(screen)
-                gequ3.draw(screen)
-                gequ4.draw(screen)
-    if gequ1.draw(screen):
-        button_appear=False
-        moonhalo=True
-    if button_appear==False:               
-        #pygame.mixer.music.load("伴奏1.mp3")
-        #pygame.mixer.music.set_volume(0.1)
-        #pygame.mixer.music.play(-1)
-        bg2=pygame.image.load("moonhalo.jpg")
-        bgpos3=bg2.get_rect()
-        screen.blit(bg2,bgpos3)
+          
+            #gequ1.draw(screen)
+            #gequ2.draw(screen)
+            #gequ3.draw(screen)
+            #gequ4.draw(screen)
+    if moonhalo_start==True:
+        if gequ1.draw(screen):
+            button_appear=False
+            moonhalo_start=True
+            moonhalo=True
+        if moonhalo==True:              
+            bg2=pygame.image.load("moonhalo.jpg")
+            bgpos3=bg2.get_rect()
+            screen.blit(bg2,bgpos3)
+        if key[pygame.K_RETURN]:
+            #moonhalo=False
+            moonhalo_start=False
+            screen.blit(bg,bgpos1)
         #gequ1=button.Button(336,80,start1,0)
         #gequ1.draw(screen)
-    #if gequ2.draw(screen):
-        #bianse2=True
-    #if bianse2==True:
-        #bgpos3=(512,512)
-       # bg1=pygame.image.load("对话背景.png")
-        #screen.blit(bg1,bgpos3)
+    if wuqi==True:
+        if gequ2.draw(screen):
+            button_appear=False
+            wuqi_start=True
+        if wuqi_start==True:
+            wuqi4=pygame.image.load("wuqi4.jpeg")
+            bgpos4=wuqi4.get_rect()
+            screen.blit(wuqi4,bgpos4)
+
+            if key[pygame.K_0]:
+                boqi=False
+                wuqi=False
+                moonhalo_start=False
+
+                screen.blit(bg,bgpos1)
+    if boqi==True:
+        if gequ3.draw(screen):
+            button_appear=False
+            boqi_start=True
+        if boqi == True:
+            boqi1=pygame.image.load("底.png")
+            bgpos5=boqi1.get_rect()
+            screen.blit(boqi1,bgpos5)
+            if key[pygame.K_0]:
+                boqi=False
+                screen.fill(color)
+                screen.blit(bg,bgpos1)
+                boqi=False
+                wuqi=False
+                moonhalo_start=False
     if game_start==False:
         screen.blit(bg,bgpos1)
     
         
     for event in pygame.event.get():
+        
         if event.type==pygame.QUIT:
+            
             run=False
             pygame.quit()
-            quit()   
+            quit()
+      
     pygame.display.update()
     clock.tick(60)
 
