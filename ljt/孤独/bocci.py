@@ -17,4 +17,5 @@ class moonhaloready():
     gequ3.draw(screen)
     gequ4.draw(screen)
     gequ5.draw(screen)
+pygame.init()
 moonhaloready()
