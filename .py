@@ -1,4 +1,5 @@
 import pygame,sys,button
+from moonhalogif import *
 from support import *
 
 pygame.init()
@@ -77,9 +78,7 @@ while run:
             moonhalo_start=True
             moonhalo=True
         if moonhalo==True:              
-            bg2=pygame.image.load("moonhalo.jpg")
-            bgpos3=bg2.get_rect()
-            screen.blit(bg2,bgpos3)
+            moonhalogif.load()
         if key[pygame.K_RETURN]:
             boqi=False
             wuqi=False
