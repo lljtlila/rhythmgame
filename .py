@@ -1,5 +1,5 @@
 import pygame,sys,button
-
+from support import *
 
 pygame.init()
 
@@ -43,6 +43,16 @@ moonhalo_start=True
 wuqi=False
 boqi=False 
 button_appear=False
+print(1)
+
+def import_assets(self):
+    self.animations={"波奇":[],"刀子":[],"物凄":[],"小圆":[]}
+
+    for animation in self.animations.keys():
+        full_path="../资源"+animation
+        self.animations[animation]=import_floder(full_path)
+    print(self.animations)
+
 while run:
     key=pygame.key.get_pressed() 
     if key[pygame.K_SPACE] :
@@ -71,7 +81,8 @@ while run:
             bgpos3=bg2.get_rect()
             screen.blit(bg2,bgpos3)
         if key[pygame.K_RETURN]:
-            #moonhalo=False
+            boqi=False
+            wuqi=False
             moonhalo_start=False
             screen.blit(bg,bgpos1)
         #gequ1=button.Button(336,80,start1,0)
