@@ -9,21 +9,25 @@ pygame.mixer.music.set_volume(0.2)
 pygame.mixer.music.play(-1)
 
 
-bg=pygame.image.load("背景.jpg")
-bg1=pygame.image.load("背景1.jpg")
+bg=pygame.image.load(".\\assets\\start\\start_bg\\背景.jpg")
+bg1=pygame.image.load(".\\assets\\start\\start_bg\\背景1.jpg")
+
 bgpos=bg.get_rect()
 bgpos1=bg1.get_rect()
 
 
 
-logo=pygame.image.load("logo.png")
+logo=pygame.image.load(".\\assets\\logo\\logo.png")
 pygame.display.set_icon(logo)
-screen=pygame.display.set_mode((1280,720),0,32)
-clock=pygame.time.Clock()
 pygame.display.set_caption("Rhythm")
+
+screen=pygame.display.set_mode((1280,720),0,32)
 screen.blit(bg,bgpos)
 key=pygame.key.get_pressed()
+
 color=(255,255,255)
+
+clock=pygame.time.Clock()
 
 
 font=pygame.font.SysFont("微软雅黑",40)
@@ -36,13 +40,21 @@ gequ1=button.Button(336,80,start1,1)
 gequ2=button.Button(459,260,start2,1) 
 gequ3=button.Button(500,470,start3,1) 
 gequ4=button.Button(336,600,start4,1) 
+
 run=True  
 game_start=False
+
 moonhalo=False 
 moonhalo_start=True 
+moonhalo_start2=False
+
 wuqi=False
+wuqi_start=False
+wuqi_start2=False
+
 boqi=False 
 button_appear=False
+
 
 
     
@@ -57,49 +69,60 @@ while run:
         
             screen.blit(bg1,bgpos1)
           
-            #gequ1.draw(screen)
-            #gequ2.draw(screen)
-            #gequ3.draw(screen)
-            #gequ4.draw(screen)
+
     if moonhalo_start==True:
         if gequ1.draw(screen):
             button_appear=False
             moonhalo_start=True
             moonhalo=True
+            moonhalo_start2=True
 
         if moonhalo==True:
             for i in range(29):
                 a=str(i+1)              
-                bg2=pygame.image.load(".\\assets\\knifes\\moonhalo"+a+".jpg")
+                bg2=pygame.image.load(".\\assets\\bg\\MoonHalo\\moonhalo"+a+".jpg")
                 bgpos3=bg2.get_rect()
+                
                 screen.blit(bg2,bgpos3)
                 pygame.display.flip()
                 time.sleep(0.033)
             moonhalo=False
             moonhalo_start=False
-
+    if moonhalo_start2==True:
         if key[pygame.K_RETURN]:
             boqi=False
             wuqi=False
             moonhalo_start=False
             screen.blit(bg1,bgpos1)
-        #gequ1=button.Button(336,80,start1,0)
-        #gequ1.draw(screen)
+            wuqi=True
+
+
     if wuqi==True:
         if gequ2.draw(screen):
             button_appear=False
             wuqi_start=True
+            wuqi_start2=True
         if wuqi_start==True:
-            wuqi4=pygame.image.load("wuqi4.jpeg")
-            bgpos4=wuqi4.get_rect()
-            screen.blit(wuqi4,bgpos4)
-
-            if key[pygame.K_0]:
+            for i in range(29):
+                a=str(i+1)              
+                bg2=pygame.image.load(".\\assets\\bg\\IceCream\\"+a+".jpg")
+                bgpos3=(1280,720)
+                image=pygame.transform.scale(bg2,bgpos3)
+                screen.blit(image,(0,0))
+                pygame.display.flip()
+                time.sleep(0.033)
+                
+            wuqi=False
+            wuqi_start=False
+            
+            
+        if wuqi_start2==True:
+            if key[pygame.K_RETURN]:
                 boqi=False
                 wuqi=False
                 moonhalo_start=False
 
-                screen.blit(bg,bgpos1)
+                screen.blit(bg1,bgpos1)
     if boqi==True:
         if gequ3.draw(screen):
             button_appear=False
