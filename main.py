@@ -1,5 +1,5 @@
 import pygame,sys,button
-import time
+import time,math
 
 pygame.init()
 
@@ -41,12 +41,15 @@ gequ2=button.Button(459,260,start2,1)
 gequ3=button.Button(500,470,start3,1) 
 gequ4=button.Button(336,600,start4,1) 
 
+score=0
+
 run=True  
 game_start=False
 
 moonhalo=False 
 moonhalo_start=True 
 moonhalo_start2=False
+moonhalo_start3=False
 
 wuqi=False
 wuqi_start=False
@@ -90,13 +93,28 @@ while run:
             moonhalo_start=False
     if moonhalo_start2==True:
         if key[pygame.K_RETURN]:
+            moonhalo_start3=True
+        if moonhalo_start3==True:
             boqi=False
             wuqi=False
+            game_bg=pygame.image.load(".\\assets\\start\\start_game\\game\\game.png").convert_alpha()
+            bgpos3=(1280,720)
+            
+            
+            image=pygame.transform.scale(game_bg,bgpos3)
+            bg_rect=image.get_rect()
+            bg_width=image.get_width()
             moonhalo_start=False
-            screen.blit(bg1,bgpos1)
-            wuqi=True
+            screen.blit(image,(0,0))
+            tiles=math.ceil(1280/bg_width)+1
 
+            for i in range(0,tiles):
+                screen.blit(image,(i*bg_width+score,0))
+                bg_rect.x=i*bg_width+score
+            if abs(score)>bg_width:
+                score=0
 
+            score-=5
     if wuqi==True:
         if gequ2.draw(screen):
             button_appear=False
@@ -111,7 +129,7 @@ while run:
                 screen.blit(image,(0,0))
                 pygame.display.flip()
                 time.sleep(0.033)
-                
+
             wuqi=False
             wuqi_start=False
             
