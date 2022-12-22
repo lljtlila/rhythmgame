@@ -44,7 +44,6 @@ moonhalo_start=True
 wuqi=False
 boqi=False 
 button_appear=False
-print(1)
 
 def import_assets(self):
     self.animations={"波奇":[],"刀子":[],"物凄":[],"小圆":[]}
