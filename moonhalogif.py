@@ -7,5 +7,6 @@ class moonhalogif():
             a = str(i+1)
             image = pygame.image.load(".\\assets\\knifes\\moonhalo"+a+".jpg")
             screen.blit(image,(0,0))
+            pygame.display.flip()
             time.sleep(0.033)
-        
+        moonhalo = False
