@@ -70,7 +70,7 @@ while run:
         if moonhalo==True:
             for i in range(29):
                 a=str(i+1)              
-                bg2=pygame.image.load(".\\assets\\MoonHalo\\moonhalo"+a+".jpg")
+                bg2=pygame.image.load(".\\assets\\knifes\\moonhalo"+a+".jpg")
                 bgpos3=bg2.get_rect()
                 screen.blit(bg2,bgpos3)
                 pygame.display.flip()
