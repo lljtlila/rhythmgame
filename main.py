@@ -1,5 +1,4 @@
 import pygame,sys,button
-import bg
 import time
 
 pygame.init()
