@@ -59,10 +59,30 @@ boqi=False
 button_appear=False
 
 
+class YinFu():
+    def __init__(self) :
+        self.x=720
+        self.y=320
+        self.speed=2
+    def draw_Yinfu(self):
+        
+        image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png")
+        bgpos=(50,50)
+        Yinfu=pygame.transform.scale(image,bgpos)
+        bgsize=50
+        
+        Yinfu_rect=pygame.Rect(x,200,bgsize,bgsize)    
+        screen.blit(Yinfu,Yinfu_rect)
+x=1280
+
+        
+
+
 
     
 
 while run:
+    
     key=pygame.key.get_pressed() 
     if key[pygame.K_SPACE] :
         game_start=True
@@ -114,7 +134,13 @@ while run:
             if abs(score)>bg_width:
                 score=0
 
-            score-=5
+            score-=3
+        if moonhalo_start3==True:
+            bgpos2=(50,50)
+            surface=pygame.Surface(bgpos2)
+            YinFu.draw_Yinfu(surface)
+            x=x-9
+            
     if wuqi==True:
         if gequ2.draw(screen):
             button_appear=False
