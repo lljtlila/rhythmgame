@@ -31,7 +31,7 @@ clock=pygame.time.Clock()
 
 
 font=pygame.font.SysFont("微软雅黑",40)
-start1=font.render(" ",True,color)
+start1=font.render(' ',True,color)
 start2=font.render(" ",True,color)
 start3=font.render(" ",True,color)
 start4=font.render(" ",True,color)
@@ -42,6 +42,8 @@ gequ3=button.Button(500,470,start3,1)
 gequ4=button.Button(336,600,start4,1) 
 
 score=0
+
+Yinfu3=True
 
 run=True  
 game_start=False
@@ -55,7 +57,13 @@ wuqi=False
 wuqi_start=False
 wuqi_start2=False
 
-boqi=False 
+#boqi=False 
+boqi=True
+boqi_start=False
+boqi_start2=False
+boqi_start3=False
+boqi_start4=False
+
 button_appear=False
 
 
@@ -66,14 +74,21 @@ class YinFu():
         self.speed=2
     def draw_Yinfu(self):
         
-        image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png")
+        image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png").convert_alpha()
         bgpos=(50,50)
         Yinfu=pygame.transform.scale(image,bgpos)
         bgsize=50
         
-        Yinfu_rect=pygame.Rect(x,200,bgsize,bgsize)    
+        Yinfu_rect=pygame.Rect(x,200,bgsize,bgsize)  
+  
         screen.blit(Yinfu,Yinfu_rect)
+
+            
+  
+
+
 x=1280
+set_time=0
 
         
 
@@ -99,6 +114,7 @@ while run:
             moonhalo_start=True
             moonhalo=True
             moonhalo_start2=True
+            boqi=False
 
         if moonhalo==True:
             for i in range(29):
@@ -136,10 +152,10 @@ while run:
 
             score-=3
         if moonhalo_start3==True:
-            bgpos2=(50,50)
-            surface=pygame.Surface(bgpos2)
-            YinFu.draw_Yinfu(surface)
+            YinFu.draw_Yinfu(screen)
             x=x-9
+            if x==200:
+                x=-1280
             
     if wuqi==True:
         if gequ2.draw(screen):
@@ -168,20 +184,58 @@ while run:
 
                 screen.blit(bg1,bgpos1)
     if boqi==True:
+        
         if gequ3.draw(screen):
             button_appear=False
             boqi_start=True
-        if boqi == True:
-            boqi1=pygame.image.load("底.png")
-            bgpos5=boqi1.get_rect()
-            screen.blit(boqi1,bgpos5)
-            if key[pygame.K_0]:
-                boqi=False
-                screen.fill(color)
-                screen.blit(bg,bgpos1)
+            boqi_start2=True
+        if boqi_start == True:
+            for i in range(29):
+                a=str(i+1)              
+                bg2=pygame.image.load(".\\assets\\bg\\Boccih\\bocci"+a+".jpg")
+                bgpos3=(1280,720)
+                image=pygame.transform.scale(bg2,bgpos3)
+                screen.blit(image,(0,0))
+                pygame.display.flip()
+                time.sleep(0.033)
+            boqi_start=False
+            boqi=False           
+            moonhalo_start=False
+    if boqi_start2==True:
+            if key[pygame.K_RETURN]:
+                boqi_start3=True
+
+    if boqi_start3==True:
                 boqi=False
                 wuqi=False
                 moonhalo_start=False
+                moonhalo_start2=False
+                moonhalo_start3=False
+                game_bg=pygame.image.load(".\\assets\\start\\start_game\\game\\game.png").convert_alpha()
+                bgpos3=(1280,720)
+            
+            
+                image=pygame.transform.scale(game_bg,bgpos3)
+                bg_rect=image.get_rect()
+                bg_width=image.get_width()
+                screen.blit(image,(0,0))
+                tiles=math.ceil(1280/bg_width)+1
+
+                for i in range(0,tiles):
+                    screen.blit(image,(i*bg_width+score,0))
+                    bg_rect.x=i*bg_width+score
+                if abs(score)>bg_width:
+                    score=0
+                score-=3
+                boqi_start4=True
+    if boqi_start4==True:
+            YinFu.draw_Yinfu(screen)           
+            x=x-9
+            if x==200:
+                x=-1280
+            
+
+
     if game_start==False:
         screen.blit(bg,bgpos1)
     

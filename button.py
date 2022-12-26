@@ -12,8 +12,8 @@ class Button():
 
     def draw(self,surface):
         action=False
-        pygame.draw.rect(surface,(255,255,255),(self.rect.x,self.rect.y,self.image.get_width(),self.image.get_height()))
-        bk=pygame.draw.rect(surface,(0,0,0),(self.rect.x,self.rect.y,self.image.get_width(),self.image.get_height()),3)
+        pygame.draw.rect(surface,(0,0,0),(self.rect.x,self.rect.y,self.image.get_width(),self.image.get_height()))
+        bk=pygame.draw.rect(surface,(255,255,255),(self.rect.x,self.rect.y,self.image.get_width(),self.image.get_height()),3)
         pos=pygame.mouse.get_pos()
         if bk.collidepoint(pos):
             if pygame.mouse.get_pressed()[0]==1 and self.clicked==False:
