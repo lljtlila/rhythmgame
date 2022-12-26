@@ -22,19 +22,7 @@ def bg():
    bg_width=image.get_width()
    screen.blit(image,(0,0))
 def mod():
-   mod=pygame.image.load(".\\assets\\mod.jpg")
-   bgpos3=(1280,720)
-   image=pygame.transform.scale(mod,bgpos3)
-   bg_rect=image.get_rect()
-   bg_width=image.get_width()
-   screen.blit(image,(0,0))
-   tiles=math.ceil(1280/bg_width)+1
-   for i in range(0,tiles):
-      screen.blit(image,(i*bg_width+score1,0))
-      bg_rect.x=i*bg_width+score1
-   if abs(score1)>bg_width:
-      score1=0
-   score1-=3
+   
    update()
 while run:
     bg()
