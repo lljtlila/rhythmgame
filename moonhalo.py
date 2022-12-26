@@ -22,8 +22,16 @@ def bg():
    bg_width=image.get_width()
    screen.blit(image,(0,0))
 def mod():
-   
-   update()
+   mod=pygame.image.load(".\\assets\\mod.jpg")
+   posx=900
+   posy=175
+   for i in range(20):
+      screen.blit(mod,(posx,posy))
+      time.sleep(20)
+      posx=posx+20
+      posy=posy+20
+      screen.blit(mod,(posx,posy))
+      update()
 while run:
     bg()
     while text:
@@ -46,7 +54,7 @@ while run:
     screen.blit(image,(0,0))
     tiles=math.ceil(1280/bg_width)+1
     for i in range(0,tiles):
-       screen.blit(image,(i*bg_width+score,0))
+       #screen.blit(image,(i*bg_width+score,0))
        bg_rect.x=i*bg_width+score
     if abs(score)>bg_width:
        score=0
@@ -60,6 +68,6 @@ while run:
     update()
     clock.tick(60) 
     update()
-    mod()
-      
-    
+    gamestart=True
+while gamestart:
+   mod()
