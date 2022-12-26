@@ -11,6 +11,7 @@ screen=pygame.display.set_mode((1280,720),0,32)
 run = True
 text = True
 score=0
+score1=0
 def update():
     pygame.display.update()
 def bg():
@@ -20,6 +21,21 @@ def bg():
    bg_rect=image.get_rect()
    bg_width=image.get_width()
    screen.blit(image,(0,0))
+def mod():
+   mod=pygame.image.load(".\\assets\\mod.jpg")
+   bgpos3=(1280,720)
+   image=pygame.transform.scale(mod,bgpos3)
+   bg_rect=image.get_rect()
+   bg_width=image.get_width()
+   screen.blit(image,(0,0))
+   tiles=math.ceil(1280/bg_width)+1
+   for i in range(0,tiles):
+      screen.blit(image,(i*bg_width+score1,0))
+      bg_rect.x=i*bg_width+score1
+   if abs(score1)>bg_width:
+      score1=0
+   score1-=3
+   update()
 while run:
     bg()
     while text:
@@ -30,7 +46,7 @@ while run:
          dy = 200
          screen.blit(image,(dx,dy))
          update()
-         pygame.time.wait(3500)
+         pygame.time.wait(1)
          bg()
          update()
          text = False
@@ -56,20 +72,6 @@ while run:
     update()
     clock.tick(60) 
     update()
-    def mod():
-      mod=pygame.image.load(".\\assets\\start\\mod.jpg")
-      bgpos3=(1280,720)
-      image=pygame.transform.scale(mod,bgpos3)
-      bg_rect=image.get_rect()
-      bg_width=image.get_width()
-      screen.blit(image,(0,0))
-      tiles=math.ceil(1280/bg_width)+1
-      for i in range(0,tiles):
-         screen.blit(image,(i*bg_width+score,0))
-         bg_rect.x=i*bg_width+score
-      if abs(score)>bg_width:
-         score=0
-      score-=3
-      update()
+    mod()
       
     
