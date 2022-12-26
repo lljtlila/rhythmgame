@@ -35,7 +35,7 @@ while run:
     update()
     clock.tick(60)
     pygame.font.init
-    font=pygame.font.SysFont(".\\assets\\得意黑.ttf",40)
+    font=pygame.font.SysFont(".\\assets\\SmileySans-Oblique.ttf",40)
     start1=font.render("Hey,这里是新手教程",True,"pink")
     screen.blit(start1,(200,100))
     update()
