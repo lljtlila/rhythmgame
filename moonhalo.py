@@ -4,7 +4,7 @@ clock = pygame.time.Clock()
 clock.tick(60)
 pygame.init()
 pygame.mixer.init()
-pygame.mixer.music.load(".\\assets\\start\\start_game\\game\\moonhalo.mp3")
+pygame.mixer.music.load(".\\assets\\start\\start_game\\game\\arknight.wav")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-50)
 screen=pygame.display.set_mode((1280,720),0,32)
@@ -34,10 +34,18 @@ while run:
            quit()
     update()
     clock.tick(60)
-    pygame.font.init
-    font=pygame.font.SysFont(".\\assets\\SmileySans-Oblique.ttf",40)
-    start1=font.render("Hey,这里是新手教程",True,"pink")
-    screen.blit(start1,(200,100))
+    for i in range(7):
+       a=str(i+1)
+       image = pygame.image.load(".\\assets\\text\\"+a+".png")
+       dx = 200
+       dy = 200
+       screen.blit(image,(dx,dy))
+       update()
+       pygame.time.wait(5000)
+       dx = dx-700
+       dy = dy-700
+       screen.blit(image,(dx,dy))
+       update() 
     update()
     
     
