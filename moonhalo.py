@@ -12,6 +12,7 @@ run = True
 text = True
 score=0
 score1=0
+x=1280
 def update():
     pygame.display.update()
 def bg():
@@ -21,17 +22,23 @@ def bg():
    bg_rect=image.get_rect()
    bg_width=image.get_width()
    screen.blit(image,(0,0))
-def mod():
-   mod=pygame.image.load(".\\assets\\mod.jpg")
-   posx=900
-   posy=175
-   for i in range(20):
-      screen.blit(mod,(posx,posy))
-      time.sleep(20)
-      posx=posx+20
-      posy=posy+20
-      screen.blit(mod,(posx,posy))
-      update()
+class YinFu():
+   def __init__(self) :
+      self.x=720
+      self.y=320
+      self.speed=2
+   def draw_Yinfu(self):
+      image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png").convert_alpha()
+      bgpos=(50,50)
+      Yinfu=pygame.transform.scale(image,bgpos)
+      bgsize=50
+      Yinfu_rect=pygame.Rect(x,200,bgsize,bgsize)  
+      screen.blit(Yinfu,Yinfu_rect)
+   def mod():
+      YinFu.draw_Yinfu(screen)
+      x=x-9
+      if x==200:
+         x=-1280
 while run:
     bg()
     while text:
@@ -54,7 +61,7 @@ while run:
     screen.blit(image,(0,0))
     tiles=math.ceil(1280/bg_width)+1
     for i in range(0,tiles):
-       #screen.blit(image,(i*bg_width+score,0))
+       screen.blit(image,(i*bg_width+score,0))
        bg_rect.x=i*bg_width+score
     if abs(score)>bg_width:
        score=0
@@ -69,5 +76,11 @@ while run:
     clock.tick(60) 
     update()
     gamestart=True
+    playerrun=True
 while gamestart:
-   mod()
+   pygame.key.get_focused()
+   key = pygame.key.get_pressed()
+   if key[pygame.K_j or pygame.K_f]:
+      YinFu.mod()
+      for i in range(11):
+         image=pygame.image.load(".\\assets\\start\\start_game\\player\\attack\\")

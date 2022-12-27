@@ -33,7 +33,7 @@ gequ3=button.Button(500,470,start3,1)
 gequ4=button.Button(336,600,start4,1) 
 
 score=0
-
+x=1280
 Yinfu3=True
 
 run=True  
@@ -72,12 +72,6 @@ class YinFu():
         Yinfu_rect=pygame.Rect(x,200,bgsize,bgsize)  
   
         screen.blit(Yinfu,Yinfu_rect)
-
-            
-  
-
-
-x=1280
 set_time=0
 
 while run:
@@ -209,10 +203,10 @@ while run:
                 score-=3
                 boqi_start4=True
     if boqi_start4==True:
-            YinFu.draw_Yinfu(screen)           
+            YinFu.draw_Yinfu(screen)
             x=x-9
             if x==200:
-                x=-1280
+               x=-1280
             
 
 
