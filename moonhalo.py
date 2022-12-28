@@ -1,5 +1,5 @@
 import pygame,sys,button
-import time,math
+import time,math,json
 clock = pygame.time.Clock()
 clock.tick(60)
 pygame.init()
@@ -28,7 +28,7 @@ class YinFu():
       y=320
       self.speed=2
    def draw_Yinfu(self):
-      image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png")
+      image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png").convert_alpha()
       bgpos=(50,50)
       Yinfu=pygame.transform.scale(image,bgpos)
       bgsize=50
@@ -80,6 +80,9 @@ while mod:
    if x==200:
       x=-1280
 while gamestart:
+   with open("moonhalo.json",'r',encoding="utf-8") as phi:
+      data=json.load(phi)
+      
    pygame.key.get_focused()
    key = pygame.key.get_pressed()
    if key[pygame.K_j or pygame.K_f]:
