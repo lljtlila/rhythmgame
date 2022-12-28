@@ -23,25 +23,22 @@ def bg():
    bg_width=image.get_width()
    screen.blit(image,(0,0))
 class YinFu():
-    def __init__(self) :
-        self.x=720
-        self.y=320
-        self.speed=2
-
-    def draw_Yinfu(self):
-        
-        image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png").convert_alpha()
-        bgpos=(50,50)
-        Yinfu=pygame.transform.scale(image,bgpos)
-        bgsize=50
-        yinfu_x=1280
-        yinfu_x=yinfu_x-100
-        if yinfu_x==200:       
-            yinfu_x=-1280
-        Yinfu_rect=pygame.Rect(yinfu_x,200,bgsize,bgsize)  
-  
-        screen.blit(Yinfu,Yinfu_rect)
-        pygame.display.flip()
+   def __init__(self) :
+      self.x=720
+      self.y=320
+      self.speed=2
+   def draw_Yinfu(self):
+      image=pygame.image.load(".\\assets\\start\\start_game\\YinFu_short.png").convert_alpha()
+      bgpos=(50,50)
+      Yinfu=pygame.transform.scale(image,bgpos)
+      bgsize=50
+      Yinfu_rect=pygame.Rect(x,200,bgsize,bgsize)  
+      screen.blit(Yinfu,Yinfu_rect)
+   def mod():
+      YinFu.draw_Yinfu(screen)
+      x=x-9
+      if x==200:
+         x=-1280
 while run:
     bg()
     while text:
@@ -80,12 +77,10 @@ while run:
     update()
     gamestart=True
     playerrun=True
-
-
-    pygame.key.get_focused()
-    key = pygame.key.get_pressed()
-    if key[pygame.K_j] or key[pygame.K_f]:
-         YinFu.draw_Yinfu(screen)
-      
-         for i in range(11):
-            image=pygame.image.load(".\\assets\\start\\start_game\\player\\attack\\")
+while gamestart:
+   pygame.key.get_focused()
+   key = pygame.key.get_pressed()
+   if key[pygame.K_j or pygame.K_f]:
+      YinFu.mod()
+      for i in range(11):
+         image=pygame.image.load(".\\assets\\start\\start_game\\player\\attack\\")
