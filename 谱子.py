@@ -2,7 +2,6 @@ import pygame,time,sys,json
 a=[]
 b=[]
 c=0
-e=0
 pygame.init()
 pygame.key.set_repeat(100, 150)
 clock=pygame.time.Clock()
