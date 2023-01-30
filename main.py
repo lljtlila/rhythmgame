@@ -81,7 +81,7 @@ class YinFu():
         Yinfu=pygame.transform.scale(image,bgpos)
         bgsize=50
         yinfu_x=1280
-        yinfu_x=yinfu_x-100
+        yinfu_x=yinfu_x-9
         if yinfu_x==200:       
             yinfu_x=-1280
         Yinfu_rect=pygame.Rect(yinfu_x,200,bgsize,bgsize)  
